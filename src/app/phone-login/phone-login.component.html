@@ -1,3 +1,30 @@
-<p>
-  phone-login works!
-</p>
+<div [hidden]="user">
+  <h1>Sign In with Your Phone Number</h1>
+
+  <label for="phone">Phone Number</label><br/>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="phoneNumber.country" placeholder="1" maxlength="2">
+    <input matInput type="text" [(ngModel)]="phoneNumber.area" placeholder="949" maxlength="3">
+    <input matInput type="text" [(ngModel)]="phoneNumber.prefix" placeholder="555" maxlength="3">
+    <input matInput type="text" [(ngModel)]="phoneNumber.line" placeholder="5555" maxlength="4">
+  </mat-form-field>
+
+  <div id="recaptcha-container"></div>
+
+  <button mat-raised-button (click)="sendLoginCode()">SMS Text Login Code</button>
+
+  <div *ngIf="windowRef.confirmationResult">
+    <hr>
+    <label for="code">Enter your Verification Code Here</label>
+    <mat-form-field>
+      <input matInput type="text" name="code" [(ngModel)]="verificationCode">
+
+      <button mat-raised-button (click)="verifyLoginCode()">Verify</button>
+    </div>
+
+    <div *ngIf="user">
+      You have successfully loggen in with your phone number!
+
+      UserId: {{ user?.uid }}
+    </div>
+</div>
