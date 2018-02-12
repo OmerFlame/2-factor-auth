@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 })
 export class PhoneLoginComponent implements OnInit {
   windowRef: any;
-  phoneNumber = new PhoneNumber()
+  phoneNumber = new this.phoneNumber()
   verificationCode: string;
 
   user: any;
