@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./phone-login.component.css']
 })
 export class PhoneLoginComponent implements OnInit {
+  country: string;
+  area: string;
+  prefix: string;
+  line: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  get e164() {
+    const num = this.country + this.area + this.prefix + this.line;
+    return `+${num}`;
   }
 
 }
